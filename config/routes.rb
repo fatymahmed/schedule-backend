@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'schedulex', to: 'schedules#index'
-  post 'schedulex', to: 'schedules#create'
-  delete 'schedulex/:id', to: 'schedules#destroy'
+  get 'schedules', to: 'schedules#index'
+  post 'schedules', to: 'schedules#create'
+  delete 'schedules/:id', to: 'schedules#destroy'
   get 'talks', to: 'talks#index'
   post 'talks', to: 'talks#create'
   delete 'talks/:id', to: 'talks#destroy'

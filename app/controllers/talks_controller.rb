@@ -1,7 +1,7 @@
 class TalksController < ApplicationController
+  include CurrentUserConcern
   def create
     @talk = Talk.new(talk_params)
-    render :json => Taalk.all unless !@talk.save
   end
 
   def destroy
@@ -17,7 +17,10 @@ class TalksController < ApplicationController
 
   def index
     @talks = Talk.all
-    render :json => @talks
+    render json: {
+      data: @talks,
+      id: @current_user
+    }
   end
 
   private
