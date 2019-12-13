@@ -10,3 +10,15 @@ aliquip ex ea commodo consequat',
 end
 
 puts '10 Talks created'
+
+3.times do |time|
+  User.create(email: 'email#{time}@gmail.com', password: "123456", password_confirmation: "123456")
+end
+
+puts '3 users created'
+
+6.times do |time|
+  schedule = Schedule.create(user_id: time%3, talk_id: time)
+end
+
+puts '6 schedules created'
