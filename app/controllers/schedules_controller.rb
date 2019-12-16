@@ -3,13 +3,13 @@ class SchedulesController < ApplicationController
   def create
     @schedule = Schedule.new(schedule_params)
     if @schedule.save
-      schedules = Talk.joins(:schedules).where(schedules: { user_id: schedule_params[:user_id] }).distinct
+      schedules = Talk.joins(:schedules).where(schedules: { user_id: schedule_params[:user_id] }).distinct.order(startTime: :desc)
       render :json => schedules
     end
   end
 
   def index
-    schedules = Talk.joins(:schedules).where(schedules: { user_id: params[:id] }).distinct
+    schedules = Talk.joins(:schedules).where(schedules: { user_id: params[:id] }).distinct.order(startTime: :desc)
     render :json => schedules
   end
 
