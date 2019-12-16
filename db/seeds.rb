@@ -17,8 +17,8 @@ end
 
 puts '3 users created'
 
-6.times do |time|
-  schedule = Schedule.create(user_id: time%3, talk_id: time)
-end
+Schedule.create(user_id: 1, talk_id: 1)
+Schedule.create(user_id: 1, talk_id: 2)
+Schedule.create(user_id: 1, talk_id: 3)
 
-puts '6 schedules created'
+puts '3 schedules created'
