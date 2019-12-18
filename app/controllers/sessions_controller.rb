@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   include CurrentUserConcern
   def create
     user = User
-            .find_by(email: params['user']['email'])
-            .try(:authenticate, params['user']['password'])
+      .find_by(email: params['user']['email'])
+      .try(:authenticate, params['user']['password'])
     if user
       session[:user_id] = user.id
       render json: {
@@ -26,8 +28,8 @@ class SessionsController < ApplicationController
       }
     else
       render json: {
-      logged_in: false
-    }
+        logged_in: false
+      }
     end
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TalksController < ApplicationController
   include CurrentUserConcern
   def create
@@ -7,12 +9,12 @@ class TalksController < ApplicationController
   def destroy
     @talk = Talk.find(params[:id])
     @talk.destroy
-    render :json => Talk.all
+    render json: Talk.all
   end
 
   def show
     @talk = Talk.find(params[:id])
-    render :json => @talk
+    render json: @talk
   end
 
   def index
