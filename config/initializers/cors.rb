@@ -5,7 +5,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'https://conference-schedule-app.herokuapp.com/' 
+    origins 'https://conference-schedule-app.herokuapp.com'
     # put heroku link here
     resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
   end
