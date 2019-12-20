@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
 class TalksController < ApplicationController
-#   include CurrentUserConcern
-#   def create
-#     @talk = Talk.new(talk_params)
-#   end
+  #   include CurrentUserConcern
+  #   def create
+  #     @talk = Talk.new(talk_params)
+  #   end
 
-#   def destroy
-#     @talk = Talk.find(params[:id])
-#     @talk.destroy
-#     render json: Talk.all
-#   end
+  #   def destroy
+  #     @talk = Talk.find(params[:id])
+  #     @talk.destroy
+  #     render json: Talk.all
+  #   end
 
-#   def show
-#     @talk = Talk.find(params[:id])
-#     render json: @talk
-#   end
+  #   def show
+  #     @talk = Talk.find(params[:id])
+  #     render json: @talk
+  #   end
 
   def index
     @talks = Talk.all
@@ -23,7 +23,7 @@ class TalksController < ApplicationController
       data: @talks
       # ,
       # id: @current_user
-    }, :except=>  [:created_at, :updated_at]
+    }, except: %i[created_at updated_at]
   end
 end
 #   private
