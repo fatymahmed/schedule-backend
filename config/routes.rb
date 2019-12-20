@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     resources :schedules, only: [:index, :destroy, :create]
   end
   get 'talks', to: 'talks#index'
-  post 'talks', to: 'talks#create'
-  delete 'talks/:id', to: 'talks#destroy'
-  get 'talks/:id', to: 'talks#show'
+  # post 'talks', to: 'talks#create'
+  # delete 'talks/:id', to: 'talks#destroy'
+  # get 'talks/:id', to: 'talks#show'
   resources :sessions, only: :create
   resources :registrations, only: :create
   delete :logout, to: 'sessions#logged_out'
