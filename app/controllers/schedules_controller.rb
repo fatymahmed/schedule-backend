@@ -6,18 +6,20 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.create(schedule_params)
     schedules = Talk.joins(:schedules).where(schedules: { user_id: schedule_params[:user_id] })
       .distinct.order(startTime: :desc)
-    render json: schedules
+    render json: schedules, :except=>  [:created_at, :updated_at]
   end
 
   def index
-    schedules = Talk.joins(:schedules).where(schedules: { user_id: params[:id] }).distinct.order(startTime: :desc)
-    render json: schedules
+    schedules = Talk.joins(:schedules).where(schedules: { user_id: params[:user_id] }).distinct.order(startTime: :desc)
+    render json: schedules, :except=>  [:created_at, :updated_at]
   end
 
   def destroy
     @schedule = Schedule.find(params[:id])
     @schedule.destroy
-    render json: Talk.left_outer_joins(:schedules).where(schedules: { user_id: params[:id] }).distinct
+    schedules = Talk.joins(:schedules).where(schedules: { user_id: schedule_params[:user_id] })
+      .distinct.order(startTime: :desc)
+    render json: schedules, :except=>  [:created_at, :updated_at]
   end
 
   private

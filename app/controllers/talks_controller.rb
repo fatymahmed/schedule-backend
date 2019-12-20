@@ -23,7 +23,7 @@ class TalksController < ApplicationController
       data: @talks
       # ,
       # id: @current_user
-    }
+    }, :except=>  [:created_at, :updated_at]
   end
 end
 #   private
