@@ -17,7 +17,6 @@ class SchedulesController < ApplicationController
   def destroy
     user = User.find(params[:user_id])
     @schedule = user.schedules.find_by(params[:id])
-    byebug
     @schedule.destroy
     schedules = Talk.joins(:schedules).where(schedules: { user_id: schedule_params[:user_id] })
       .distinct.order(startTime: :desc)
