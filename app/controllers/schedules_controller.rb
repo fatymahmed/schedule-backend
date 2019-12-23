@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
   end
 
   def index
-    schedules = Talk.joins(:schedules).where(schedules: { user_id: params[:user_id] }).distinct.order(startTime: :desc)
+    schedules = Schedule.joins(:talks).where(schedules: { user_id: params[:user_id] }).distinct.order(startTime: :desc)
     render json: schedules, except: %i[created_at updated_at]
   end
 
