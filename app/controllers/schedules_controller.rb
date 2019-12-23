@@ -16,9 +16,9 @@ class SchedulesController < ApplicationController
 
   def destroy
     user = User.find(params[:user_id])
-    @schedule = user.schedules.find_by(params[:id])
+    @schedule = user.schedules.find_by(talk_id: params[:id])
     @schedule.destroy
-    schedules = Talk.joins(:schedules).where(schedules: { user_id: schedule_params[:user_id] })
+    schedules = Talk.joins(:schedules).where(schedules: { user_id: params[:user_id] })
       .distinct.order(startTime: :desc)
     render json: schedules, except: %i[created_at updated_at]
   end
