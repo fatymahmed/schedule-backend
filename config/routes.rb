@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   resources :users, only: [] do
     resources :schedules, only: [:index, :destroy, :create]
+    # get 'schedule_id', to: 'schedules#schedule_id'
   end
   get 'talks', to: 'talks#index'
-  # post 'talks', to: 'talks#create'
-  # delete 'talks/:id', to: 'talks#destroy'
-  # get 'talks/:id', to: 'talks#show'
   resources :sessions, only: :create
   resources :registrations, only: :create
   delete :logout, to: 'sessions#logged_out'
